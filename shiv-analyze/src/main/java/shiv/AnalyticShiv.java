@@ -2,6 +2,7 @@ package shiv;
 
 import org.jgrapht.Graph;
 import org.jgrapht.graph.DefaultEdge;
+import shiv.analyzer.RecursiveDependencyAnalyzer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +12,7 @@ public class AnalyticShiv implements Shiv {
 
     final static List<Analyzer> analyzers = new ArrayList<>();
     static {
-        analyzers.add(null);
+        analyzers.add(new RecursiveDependencyAnalyzer());
     }
 
 
@@ -28,11 +29,15 @@ public class AnalyticShiv implements Shiv {
 
     @Override
     public Optional<Exception> verify() {
-        Graph<Class<?>, DefaultEdge> graph = registration.exportGraph().analyzable();
+        Problems<Graph<Class<?>, RelayEdge>> problems = registration.exportGraph().analyzable();
+
+        if (problems.hasProblems()) {
+            return Optional.of(problems.getProblems().get(0)); //TODO fix
+        }
 
         List<Exception> exceptions = analyzers
                 .stream()
-                .map(analyzer -> analyzer.analyze(graph))
+                .map(analyzer -> analyzer.analyze(problems.getT()))
                 .filter(Optional::isPresent)
                 .map(Optional::get)
                 .toList();

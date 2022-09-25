@@ -7,6 +7,6 @@ import java.util.Optional;
 
 public interface Analyzer {
 
-    Optional<Exception> analyze(Graph<Class<?>, DefaultEdge> graph);
+    Optional<Exception> analyze(Graph<Class<?>, RelayEdge> graph);
 
 }

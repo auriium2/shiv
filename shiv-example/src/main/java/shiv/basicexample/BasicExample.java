@@ -12,8 +12,6 @@ public class BasicExample {
 
         Shiv test = Shiv.provide(new CoreModule());
 
-        test.verify();; //should return a verifyResult<Exception> instead of throwing exceptions
-
         ShivApp app = test.build();
         SmartCoreUser user = app.get(SmartCoreUser.class);
         user.specialIncrement();

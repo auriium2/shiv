@@ -2,7 +2,7 @@ package shiv;
 
 import org.jgrapht.Graph;
 import org.jgrapht.graph.DefaultDirectedGraph;
-import org.jgrapht.graph.DefaultEdge;
+import shiv.analyzer.MissingProviderException;
 import shiv.internal.GraphRepresentation;
 
 import java.util.ArrayList;
@@ -11,13 +11,13 @@ import java.util.List;
 //use jgrapht
 public class AnalyticGraph implements GraphRepresentation {
 
-    static class Edge {
-        final Class<?> parent;
-        final Class<?> depender;
+    public static class Edge {
+        final Class<?> provided;
+        final Class<?> required;
 
-        public Edge(Class<?> parent, Class<?> depender) {
-            this.parent = parent;
-            this.depender = depender;
+        public Edge(Class<?> provided, Class<?> required) {
+            this.provided = provided;
+            this.required = required;
         }
     }
 
@@ -26,27 +26,51 @@ public class AnalyticGraph implements GraphRepresentation {
 
 
     @Override
-    public void vertex(Class<?> supplied) {
-        vertexAddList.add(supplied);
+    public void vertex(Class<?> provided) {
+        vertexAddList.add(provided);
     }
 
     @Override
-    public void edge(Class<?> user, Class<?> required) {
-        edgeAddList.add(new Edge(user, required));
+    public void edge(Class<?> provided, Class<?> required) {
+        edgeAddList.add(new Edge(provided, required));
     }
 
-    Graph<Class<?>, DefaultEdge> analyzable() {
+    Problems<Graph<Class<?>, RelayEdge>> analyzable() {
 
-        Graph<Class<?>,DefaultEdge> graph = new DefaultDirectedGraph<>(DefaultEdge.class);
+        //TODO clean this shit up
+        List<Exception> issues = new ArrayList<>();
+        Graph<Class<?>,RelayEdge> graph = new DefaultDirectedGraph<>(RelayEdge.class);
         for (Class<?> vertex : vertexAddList) {
             graph.addVertex(vertex);
         }
 
+
+        StringBuilder builder = new StringBuilder("[Shiv/MissingProvider]")
+                .append("\n\nError: Some of your providers (A) have dependencies on certain classes (B) but no providers exist to provide classes of type (B)");
+
+        int counter = 0;
         for (Edge edge : edgeAddList) {
-            graph.addEdge(edge.parent, edge.depender);
+
+
+            if (!vertexAddList.contains(edge.required)) {
+                counter++;
+
+                builder
+                        .append("\n\tClass ").append(edge.provided).append(" depends on class ").append(edge.required)
+                        .append(" (missing provider)");
+            } else {
+                graph.addEdge(edge.provided, edge.required);
+            }
+
         }
 
-        return graph;
+        builder.append("\n\nPlease implement methods to provide the classes marked as (missing provider) and recompile");
+
+        if (counter > 0) {
+            issues.add(new MissingProviderException(builder.toString()));
+        }
+
+        return new Problems<>(issues, graph);
 
     }
 }

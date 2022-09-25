@@ -1,0 +1,14 @@
+# Project exclude paths
+/.gradle/
+/build/
+/shiv-analyze/build/
+/shiv-analyze/build/classes/java/main/
+/shiv-analyze/build/classes/java/test/
+/shiv-api/build/
+/shiv-api/build/classes/java/main/
+/shiv-api/build/classes/java/test/
+/shiv-core/build/
+/shiv-core/build/classes/java/main/
+/shiv-core/build/classes/java/test/
+/shiv-example/build/
+/shiv-example/build/classes/java/main/

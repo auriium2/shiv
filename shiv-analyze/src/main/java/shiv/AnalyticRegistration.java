@@ -1,7 +1,6 @@
 package shiv;
 
 import shiv.builder.Builder1Impl;
-import shiv.internal.GraphRepresentation;
 import shiv.internal.Provider;
 
 import java.util.ArrayList;
