@@ -1,0 +1,6 @@
+rootProject.name = 'shiv'
+include 'shiv-api'
+include 'shiv-core'
+include 'shiv-example'
+include 'shiv-analyze'
+

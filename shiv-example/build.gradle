@@ -1,0 +1,19 @@
+plugins {
+    id 'java'
+}
+
+group 'shiv'
+version '1.0.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(':shiv-api')
+    implementation project(':shiv-core')
+}
+
+test {
+    useJUnitPlatform()
+}
