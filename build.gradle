@@ -1,19 +1,45 @@
 plugins {
     id 'java'
+    id 'maven-publish'
 }
 
 group 'shiv'
 version '1.0.0-SNAPSHOT'
 
-repositories {
-    mavenCentral()
+publishing {
+    repositories {
+        maven {
+            credentials {
+                credentials {
+                    username = "$usr"
+                    password = "$pwd"
+                }
+            }
+
+            if(rootProject.version.endsWith('-SNAPSHOT')) {
+                url "https://repo.superyuuki.com/snapshots"
+            } else {
+                url "https://repo.superyuuki.com/releases"
+            }
+        }
+    }
 }
 
-dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
-}
+subprojects {
+    apply plugin: "java"
 
-test {
-    useJUnitPlatform()
+    java {
+        withSourcesJar()
+    }
+
+    publishing {
+        publications {
+            "$project.name"(MavenPublication) {
+                artifactId "$project.name"
+
+                artifact jar
+            }
+        }
+
+    }
 }
