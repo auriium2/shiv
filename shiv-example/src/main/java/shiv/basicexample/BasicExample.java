@@ -1,7 +1,6 @@
 package shiv.basicexample;
 
 import shiv.Shiv;
-import shiv.ShivApp;
 import shiv.basicexample.deps.CoreChecker;
 import shiv.basicexample.deps.CoreModule;
 import shiv.basicexample.deps.SmartCoreUser;

@@ -1,5 +1,7 @@
 package shiv;
 
+import shiv.internal.ShivProvider;
+
 public class AnalyticProvider implements ShivProvider {
     @Override
     public Shiv provide(Module... modules) {

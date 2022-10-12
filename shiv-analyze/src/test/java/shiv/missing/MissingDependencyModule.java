@@ -1,6 +1,5 @@
 package shiv.missing;
 
-import shiv.Module;
 import shiv.Shiv;
 
 public class MissingDependencyModule implements Module {

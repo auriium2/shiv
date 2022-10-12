@@ -3,7 +3,6 @@ package shiv;
 import org.jgrapht.Graph;
 import org.jgrapht.graph.DefaultDirectedGraph;
 import shiv.analyzer.MissingProviderException;
-import shiv.internal.GraphRepresentation;
 
 import java.util.ArrayList;
 import java.util.List;

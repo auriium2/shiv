@@ -2,15 +2,12 @@ package shiv.analyzer;
 
 import org.jgrapht.Graph;
 import org.jgrapht.alg.connectivity.KosarajuStrongConnectivityInspector;
-import org.jgrapht.graph.DefaultEdge;
 import shiv.Analyzer;
 import shiv.RelayEdge;
-import shiv.checker.ShivCompileException;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class RecursiveDependencyAnalyzer implements Analyzer {
 
