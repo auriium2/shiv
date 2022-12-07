@@ -2,8 +2,8 @@ package shiv.impl;
 
 import shiv.Shiv;
 import shiv.exception.DuplicateApplicationException;
-import shiv.flexible.Provides;
-import shiv.flexible.ProvidesApp;
+import shiv.IProvides;
+import shiv.IProvidesApp;
 
 public class ShivImpl implements Shiv {
 
@@ -13,12 +13,12 @@ public class ShivImpl implements Shiv {
 
 
     @Override
-    public <T> Provides<T> withProvider(Class<T> t) {
+    public <T> IProvides<T> withProvider(Class<T> t) {
         return null;
     }
 
     @Override
-    public <T> ProvidesApp<T> withApplication() {
+    public <T> IProvidesApp<T> withApplication() {
         return null;
     }
 

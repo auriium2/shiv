@@ -1,7 +1,5 @@
 package shiv.exception;
 
-import shiv.checker.ShivInternalException;
-
 public class NoProviderException extends ShivInternalException {
 
     public NoProviderException(String needs) {

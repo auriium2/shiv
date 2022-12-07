@@ -1,6 +1,8 @@
-package shiv.flexible;
+package shiv;
 
-public interface With {
+import shiv.flexible.Initializer;
+
+public interface IWith {
 
     interface None<T> {
         void register(Initializer.None<T> init);

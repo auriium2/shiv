@@ -3,13 +3,12 @@ package shiv.flexible;
 import java.io.Serializable;
 
 /**
- * this has to be serializable in order for the analysis class to
- * do compile time reflection and build function name graphs.
- *
  * represents a function that initializes something, should typically be a method reference
+ * if you have a class with a constructor(a,b) and Shiv is asking you for an Initializer.Two, you
+ * can register your constructor there
  *
  */
-public interface Initializer extends Serializable {
+public interface Initializer extends Serializable { //serializable in order to allow Java to save the method name during debugging
 
     interface None<OUT> extends Initializer {
         OUT provide();

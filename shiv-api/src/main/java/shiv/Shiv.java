@@ -1,8 +1,5 @@
 package shiv;
 
-import shiv.flexible.Provides;
-import shiv.flexible.ProvidesApp;
-import shiv.flexible.With;
 import shiv.internal.ShivProvider;
 
 import java.util.Comparator;
@@ -12,8 +9,8 @@ import java.util.ServiceLoader;
 
 public interface Shiv {
 
-    <T> Provides<T> withProvider(Class<T> t);
-    <T> ProvidesApp<T> withApplication();
+    <T> IProvides<T> withProvider(Class<T> t);
+    <T> IProvidesApp<T> withApplication();
 
     static Shiv provide() {
         ServiceLoader<ShivProvider> loader = ServiceLoader.load(ShivProvider.class);

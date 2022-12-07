@@ -1,6 +1,6 @@
 package shiv.exception.runtime;
 
-import shiv.checker.ShivInternalException;
+import shiv.exception.ShivInternalException;
 
 import java.util.Arrays;
 

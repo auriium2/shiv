@@ -1,4 +1,4 @@
-package shiv.checker;
+package shiv.exception;
 
 //Should only be thrown at compile time...
 public class ShivAnalyzeException extends Exception {

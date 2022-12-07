@@ -1,6 +1,6 @@
 package shiv.exception.runtime;
 
-import shiv.checker.ShivInternalException;
+import shiv.exception.ShivInternalException;
 
 public class CriticalException extends ShivInternalException {
 

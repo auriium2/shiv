@@ -1,7 +1,5 @@
 package shiv.exception;
 
-import shiv.checker.ShivInternalException;
-
 public class TooManyProvidersException extends ShivInternalException {
 
     public TooManyProvidersException(String provider) {

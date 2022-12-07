@@ -1,7 +1,5 @@
 package shiv.exception;
 
-import shiv.checker.ShivCompileException;
-
 public class DuplicateApplicationException extends ShivCompileException {
 
     final static String error = """

@@ -1,6 +1,6 @@
 package shiv.analyzer;
 
-import shiv.checker.ShivAnalyzeException;
+import shiv.exception.ShivAnalyzeException;
 
 public class RecursiveDependencyException extends ShivAnalyzeException {
 

@@ -1,6 +1,5 @@
 package shiv;
 
-import shiv.builder.Builder1Impl;
 import shiv.internal.InternalProvider;
 
 import java.util.ArrayList;

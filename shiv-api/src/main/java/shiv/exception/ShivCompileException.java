@@ -1,4 +1,4 @@
-package shiv.checker;
+package shiv.exception;
 
 public class ShivCompileException extends RuntimeException{
 

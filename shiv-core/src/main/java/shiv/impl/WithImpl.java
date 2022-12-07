@@ -1,11 +1,11 @@
 package shiv.impl;
 
 import shiv.flexible.Initializer;
-import shiv.flexible.With;
+import shiv.IWith;
 import shiv.initializer.ContainerOne;
 
 //seriously don't look at this code
-class WithImpl<T,A,B,C,D,E> implements With.None<T>, With.One<T,A>, With.Two<T,A,B>, With.Three<T,A,B,C>, With.Four<T,A,B,C,D>, With.Five<T,A,B,C,D,E> {
+class WithImpl<T,A,B,C,D,E> implements IWith.None<T>, IWith.One<T,A>, IWith.Two<T,A,B>, IWith.Three<T,A,B,C>, IWith.Four<T,A,B,C,D>, IWith.Five<T,A,B,C,D,E> {
 
     final Class<T> t;
 
