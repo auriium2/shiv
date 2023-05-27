@@ -1,8 +1,7 @@
 package shiv.impl;
 
-import shiv.flexible.Initializer;
 import shiv.IWith;
-import shiv.initializer.ContainerOne;
+import shiv.flexible.Initializer;
 
 //seriously don't look at this code
 class WithImpl<T,A,B,C,D,E> implements IWith.None<T>, IWith.One<T,A>, IWith.Two<T,A,B>, IWith.Three<T,A,B,C>, IWith.Four<T,A,B,C,D>, IWith.Five<T,A,B,C,D,E> {
@@ -27,6 +26,7 @@ class WithImpl<T,A,B,C,D,E> implements IWith.None<T>, IWith.One<T,A>, IWith.Two<
     @Override
     public void register(Initializer.None<T> init) {
 
+        //essentially add this connector to the global list (could do some connector building)
     }
 
     @Override
