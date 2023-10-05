@@ -1,6 +1,5 @@
 package shiv.basicexample.deps;
 
-import shiv.Module;
 import shiv.Shiv;
 
 public class CoreModule implements Module {

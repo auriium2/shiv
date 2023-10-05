@@ -1,11 +1,8 @@
 package shiv.analyzer;
 
-import shiv.AnalyticGraph;
-import shiv.checker.ShivCompileException;
+import shiv.exception.ShivAnalyzeException;
 
-import java.util.Set;
-
-public class MissingProviderException extends ShivCompileException {
+public class MissingProviderException extends ShivAnalyzeException {
 
     public MissingProviderException(String message) {
 

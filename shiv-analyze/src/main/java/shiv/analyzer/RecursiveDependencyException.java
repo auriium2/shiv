@@ -1,12 +1,8 @@
 package shiv.analyzer;
 
-import org.jgrapht.graph.DefaultEdge;
-import shiv.checker.ShivCompileException;
+import shiv.exception.ShivAnalyzeException;
 
-import java.util.Set;
-import java.util.function.Supplier;
-
-public class RecursiveDependencyException extends ShivCompileException {
+public class RecursiveDependencyException extends ShivAnalyzeException {
 
 
 

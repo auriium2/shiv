@@ -1,6 +1,5 @@
 package shiv.recursive;
 
-import shiv.Module;
 import shiv.Shiv;
 
 public class SelfDependencyModule implements Module  {
