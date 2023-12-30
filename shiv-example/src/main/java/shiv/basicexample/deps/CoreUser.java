@@ -1,9 +1,13 @@
 package shiv.basicexample.deps;
 
+import jakarta.inject.Inject;
+
 public class CoreUser {
 
-    final Core core;
+    @Inject
+    Core core;
 
+    @Inject
     public CoreUser(Core core) {
         this.core = core;
     }

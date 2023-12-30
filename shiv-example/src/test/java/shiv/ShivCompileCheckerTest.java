@@ -1,3 +1,5 @@
+package shiv;
+
 import org.junit.jupiter.api.Test;
 import shiv.Shiv;
 import shiv.basicexample.deps.CoreModule;

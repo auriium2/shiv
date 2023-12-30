@@ -3,6 +3,7 @@ package shiv;
 import org.jgrapht.Graph;
 import org.jgrapht.graph.DefaultEdge;
 import shiv.analyzer.RecursiveDependencyAnalyzer;
+import shiv.internal.Provider;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,7 @@ public class AnalyticShiv implements Shiv {
 
     @Override
     public ShivApp build() {
-        return new ShivAppImpl(registration.export());
+        return new ShivAppImpl(registration.export().toArray(Provider[]::new));
     }
 
     @Override
@@ -53,5 +54,13 @@ public class AnalyticShiv implements Shiv {
     @Override
     public String name() {
         return "analytic";
+    }
+
+    @Override
+    public <T> T rawAccess(Class<T> clazz) {
+        if (clazz == Graph.class) {
+            return clazz.cast(registration.exportGraph().analyzable().getT());
+        }
+        throw new UnsupportedOperationException("not present");
     }
 }

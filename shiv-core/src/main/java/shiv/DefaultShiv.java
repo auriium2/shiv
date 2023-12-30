@@ -7,9 +7,9 @@ import java.util.Optional;
 
 public class DefaultShiv implements Shiv {
 
-    final List<Provider<?>> providers;
+    final Provider<?>[] providers;
 
-    public DefaultShiv(List<Provider<?>> providers) {
+    public DefaultShiv(Provider<?>[] providers) {
         this.providers = providers;
     }
 
@@ -27,5 +27,14 @@ public class DefaultShiv implements Shiv {
     @Override
     public String name() {
         return "default";
+    }
+
+    @Override
+    public <T> T rawAccess(Class<T> clazz) {
+        if (clazz == List.class) {
+            return (T) providers;
+        }
+
+        throw new UnsupportedOperationException("not present");
     }
 }

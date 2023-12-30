@@ -1,10 +1,15 @@
 package shiv.basicexample.deps;
 
+import jakarta.inject.Inject;
+
 public class SmartCoreUser {
 
-    final Core core;
-    final CoreUser user;
+    @Inject
+    Core core;
+    @Inject
+    CoreUser user;
 
+    @Inject
     public SmartCoreUser(Core core, CoreUser user) {
         this.core = core;
         this.user = user;

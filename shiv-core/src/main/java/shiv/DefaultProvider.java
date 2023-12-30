@@ -2,6 +2,7 @@ package shiv;
 
 import shiv.internal.GraphRepresentation;
 import shiv.internal.EmptyGraph;
+import shiv.internal.Provider;
 
 public class DefaultProvider implements ShivProvider {
     @Override
@@ -13,7 +14,7 @@ public class DefaultProvider implements ShivProvider {
         }
 
 
-        return new DefaultShiv(registration.export());
+        return new DefaultShiv(registration.export().toArray(Provider[]::new));
     }
 
     @Override

@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id "me.champeau.jmh" version "0.7.2"
 }
 
 group 'shiv'
@@ -13,8 +14,21 @@ dependencies {
     implementation project(':shiv-core')
 
     testImplementation project(':shiv-analyze')
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
+    implementation 'org.jgrapht:jgrapht-core:1.5.1'
+    // https://mvnrepository.com/artifact/org.jgrapht/jgrapht-ext
+    implementation 'org.jgrapht:jgrapht-ext:1.5.2'
+
+    testImplementation('com.github.vlsi.mxgraph:jgraphx:4.2.2')
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
+
+    implementation 'com.google.inject:guice:6.0.0'
+
+    implementation 'org.openjdk.jmh:jmh-core:1.36'
+    implementation 'org.openjdk.jmh:jmh-generator-annprocess:1.36'
+
+    // this is the line that solves the missing /META-INF/BenchmarkList error
+    jmhAnnotationProcessor 'org.openjdk.jmh:jmh-generator-annprocess:1.36'
 }
 
 test {

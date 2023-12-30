@@ -27,5 +27,13 @@ public interface Shiv {
         return provider.get().provide(modules);
     }
 
+    /**
+     * Debugging method not included in release compiled versions
+     * @param clazz
+     * @return
+     * @param <T>
+     */
+    <T> T rawAccess(Class<T> clazz);
+
 
 }

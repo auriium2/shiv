@@ -19,8 +19,6 @@ public class RecursiveDependencyAnalyzer implements Analyzer {
 
         var kot = new KosarajuStrongConnectivityInspector<>(graph);
 
-        var sets = kot.getStronglyConnectedComponents();
-
         List<Set<RelayEdge>> cycles = kot
                 .getStronglyConnectedComponents()
                 .stream()

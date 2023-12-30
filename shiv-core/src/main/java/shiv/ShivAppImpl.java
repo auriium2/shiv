@@ -1,18 +1,19 @@
 package shiv;
 
 import shiv.internal.Provider;
-import shiv.runtime.NoProviderException;
 import shiv.runtime.TooManyProvidersException;
 
 import java.util.*;
 
 public class ShivAppImpl implements ShivApp {
 
-    final List<Provider<?>> providers;
+    final Provider<?>[] providers;
 
-    public ShivAppImpl(List<Provider<?>> providers) {
+    public ShivAppImpl(Provider<?>[] providers) {
         this.providers = providers;
     }
+
+    final Map<Class<?>, Provider<?>> EYESEAU_CACHE = new HashMap<>();
 
 
     @Override
@@ -22,7 +23,7 @@ public class ShivAppImpl implements ShivApp {
 
     @Override
     public <T> T get(Class<T> clazz) {
-        return internalGet(clazz);
+        return internalGetProvider(clazz).provide(this::internalGet);
     }
 
 
@@ -31,17 +32,22 @@ public class ShivAppImpl implements ShivApp {
     }
 
     <T> Provider<T> internalGetProvider(Class<T> type) {
+        Provider<?> possibleProvider = EYESEAU_CACHE.get(type);
+        if (possibleProvider != null) return (Provider<T>) possibleProvider;
+
         List<Provider<T>> list = internalGetListOfType(type);
 
         if (list.size() == 0) {
-            throw new NoProviderException(type.getSimpleName());
+            throw new IllegalStateException(type.getSimpleName());
         }
 
         if (list.size() > 1) {
             throw new TooManyProvidersException(type.getSimpleName());
         }
 
-        return Objects.requireNonNull(list.get(0));
+        Provider<T> correctProvider = list.get(0);
+        EYESEAU_CACHE.put(type, correctProvider);
+        return Objects.requireNonNull(correctProvider);
     }
 
     @SuppressWarnings("unchecked")
@@ -49,7 +55,7 @@ public class ShivAppImpl implements ShivApp {
         List<Provider<T>> collected = new ArrayList<>();
 
         for (Provider<?> provider : providers) {
-            if (type.isAssignableFrom(provider.getClass())) {
+            if (type.isAssignableFrom(provider.mostSpecificProvides())) {
                 collected.add((Provider<T>) provider);
             }
         }
