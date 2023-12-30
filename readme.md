@@ -7,6 +7,7 @@
 - no annotations, no "magic"
 - no dumb bloat
 - zero* library dependencies
+- if you came here from the vid wait for select-and-new branch to be done
 
 ## What is this?
 shiv takes method references (java lambdas) and organizes calls to them in such a way where method dependencies are supplied recursively
