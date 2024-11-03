@@ -29,7 +29,7 @@ shiv is split up into packages:
   - call ``Otherthing other = shiv.build().get(Otherthing.class)``
 
 ## Probably, don't use this.
-i made this for my robotics team some time ago as a proof of concept, as well as to avoid having to teach a full dependency injection framework like Google Guice and all of it's annotations. Nowadays, more modern alternatives such as Google's [Dagger2](https://github.com/google/dagger) framework seems to implement compile time generation (Although I believe it still uses some reflection and the jakarta standard annotations), so you should probably use the library with a nonzero maintainer count, haha
+i made this for my robotics team some time ago as a proof of concept.
 
 ## I still want to use this
 don't say I didn't warn you...
