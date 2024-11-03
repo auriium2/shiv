@@ -8,7 +8,9 @@
 - zero* library dependencies
 
 ## What is this?
-shiv takes method references (java lambdas) and organizes calls to them in such a way where method dependencies are supplied recursively
+shiv takes method references (java lambdas) and organizes calls to them in such a way where method dependencies are supplied recursively. 
+
+It analyzes the dependency graph and verifies model safety at compile time, then swaps to a lightweight hashmap at runtime for maximum performance.
 
 ## What are all the package modules?
 shiv is split up into packages:
